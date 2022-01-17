@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 16px;
+    margin-top: calc(100%/10);
+    margin-bottom: calc(100%/10);
+}
+
+body{
+    background-image: url(../../../assets/img/fondo-login.jpg);
+    background-repeat: no-repeat;
+    background-color:rgba(250, 250, 250, 0.1);
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
+    
+}
+
+*{
+    font-family: inherit;
+}

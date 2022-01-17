@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-xs-12 col-xl-12 col-md-12 col-lg-12">
+            <div class="card" style="border-radius: 5px; border: 2px solid #d4cece;">
+                <div class="card-body">
+                    <form (ngSubmit)="ingresar()">
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-md-12 col-lg-12">
+                                <img width="300" height="270" src="../../../assets/img/icon-login.png" />
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <h4 style="text-align: center;">INICIAR SESION</h4>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-label">USUARIO</label>
+                                    <input name="user" [(ngModel)]="user" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-label">CONTRASEÑA</label>
+                                    <input name="pass" [(ngModel)]="pass" type="password" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-xl-12 col-md-12 col-lg-12">
+                                <button type="submit" class="btn btn-success btn-block">INGRESAR</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>

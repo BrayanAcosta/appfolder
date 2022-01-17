@@ -1,0 +1,133 @@
+<div class=" content">
+    <form>
+        <div class="row justify-content-end">
+            <div class="col-12 col-xs-12 col-md-3">
+                <div class="form-group">
+                    <button type="button" (click)="controlModalArchivo()" class="btn btn-success btn-block">SUBIR ARCHIVO</button>
+                </div>
+            </div>
+            <div class="col-12 col-xs-12 col-md-3">
+                <div class="form-group">
+                    <button type="button" (click)="controlModalCarpeta()" class="btn btn-success btn-block">CREAR
+                        CARPETA</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    {{ servidor.carpetaRaiz }}\{{ rutaActual.ruta }}
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table tablesorter">
+                            <thead>
+                                <tr>
+                                    <th>NOMBRE</th>
+                                    <th>FECHA DE CARGUE</th>
+                                    <th>TAMAÑO</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr (dblclick)="backFolder()" class="maus">
+                                    <td colspan="3">../</td>
+                                </tr>
+                                <tr (dblclick)="openFolder(i)" class="maus" *ngFor="let item of listaDocumentos;let i=index">
+                                    <td>
+                                        <p><i class="pi pi-folder" *ngIf="item.fkTipo.id === 1"></i><i *ngIf="item.fkTipo.id === 2" class="pi pi-file"></i> {{ item.nombre }}</p>
+                                    </td>
+                                    <td>{{ item.fechaRegistro.toLocaleString('en-US')}}</td>
+                                    <td>{{ item.peso }}</td>
+                                    <td><i *ngIf="item.fkTipo.id === 2" (click)="cosultarDescarga(item.id)" class="pi pi-download"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-dialog [modal]="true" [contentStyle]="{'background-color':'rgb(82,95,127)'}" [showHeader]="false" [style]="{width:'40vw'}" [visible]="viewModalCarpeta">
+            <div class="row">
+                <div class="col-12 col-xs-12 col-md-12">
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <h4 style="color: white;">CREAR CARPETA</h4>
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <div class="form-group">
+                                <label style="color: white;">Nombre de la carpeta</label>
+                                <input name="namefolder" [(ngModel)]="carpeta.nombre" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <div class="form-group">
+                                <button type="button" (click)="crearCapeta()" class="btn btn-success btn-block">CREAR</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <div class="form-group">
+                                <button type="button" (click)="controlModalCarpeta()" class="btn btn-danger btn-block">CERRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </form>
+
+    <form (ngSubmit)="cargarDocumento()" enctype="multipart/form-data">
+        <p-dialog [modal]="true" [contentStyle]="{'background-color':'rgb(82,95,127)'}" [showHeader]="false" [style]="{width:'40vw'}" [visible]="viewModalArchivo">
+            <div class="row">
+                <div class="col-12 col-xs-12 col-md-12">
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <h4 style="color: white;">CARGAR ARCHIVO</h4>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <input style="color: white;" [(ngModel)]="imagen" (change)="changeFile($event)" id="file-upload" class="p-0" name="photo" type="file">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <div class="form-group">
+                                <button type="submit" name="btnlo" class="btn btn-success btn-block">CREAR</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-12">
+                            <div class="form-group">
+                                <button type="button" (click)="controlModalArchivo()" class="btn btn-danger btn-block">CERRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </form>
+
+
+</div>
+<p-toast></p-toast>
+<p-dialog [visible]="viewModalLoad" [modal]="true" [style]="{'border':'1px solid','border-radius':'10px'}" [contentStyle]="{'padding':'25px'}" [showHeader]="false">
+    <div class="container">
+        <div class="row">
+            <p-progressSpinner></p-progressSpinner>
+        </div>
+    </div>
+</p-dialog>

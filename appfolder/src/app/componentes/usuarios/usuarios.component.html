@@ -1,0 +1,90 @@
+<div class=" content">
+    <form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>CREAR USUARIO</h4>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>NOMBRE</label>
+                                    <input name="nam" [(ngModel)]="usuario.nombre" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>APELLIDOS</label>
+                                    <input [(ngModel)]="usuario.apellidos" name="ape" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>NOMBRE DE USUARIO O CORREO</label>
+                                    <input name="namu" [(ngModel)]="usuario.usuario" style="background-color:transparent;" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>CONTRASEÑA</label>
+                                    <input name="pas" [(ngModel)]="usuario.password" style="background-color:transparent;" type="password" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>CONFIRMAR CONTRASEÑA</label>
+                                    <input name="pasc" [(ngModel)]="pass" style="background-color:transparent;" type="password" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button (click)="agregarUsuario()" type="button" class="btn btn-success btn-block">REGISTRAR USUARIO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>NOMBRE</th>
+                                    <th>NOMBRE DE USUARIO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listaUsuario">
+                                    <td>{{ item.nombre }}</td>
+                                    <td>{{ item.usuario }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-confirmDialog icon="pi pi-exclamation-triangle"></p-confirmDialog>
+        <p-toast></p-toast>
+    </form>
+
+</div>

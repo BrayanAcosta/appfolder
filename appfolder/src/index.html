@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Appfolder</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
+</head>
+
+<body>
+    <app-root></app-root>
+
+    <script>
+        var idleTime = 0;
+
+
+        window.onload = function() {
+            document.addEventListener("mousemove", function() {
+                idleTime = 0;
+            });
+            document.addEventListener("keypress", function() {
+                idleTime = 0;
+            });
+            var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+        };
+
+
+
+        // Increment the idle time counter every minute.
+
+        // Zero the idle timer on mouse movement.
+
+        function timerIncrement() {
+            var path = window.location.pathname;
+            if (path !== "/login" && path !== "/") {
+                idleTime = idleTime + 1;
+                if (idleTime > 20) { // 20 minutes
+                    sessionStorage.clear();
+                    localStorage.clear();
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
